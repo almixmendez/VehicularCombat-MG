@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -185,13 +185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403ff9f33e8b93f4fa97fcec90486748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFiring: 0
-  muzzleFlash:
-  - {fileID: 198515452028179756}
-  - {fileID: 198234346722055562}
-  hitEffect: {fileID: 4269648400581548136}
-  raycastOrigin: {fileID: 74198305}
-  raycastDestination: {fileID: 1609888010}
 --- !u!1 &40797244
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,13 +556,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 74198304}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 14.7, z: 27.1}
+  m_LocalRotation: {x: -0, y: -0.77995145, z: 0.000000014901163, w: 0.62584007}
+  m_LocalPosition: {x: 0.39999872, y: 14.699994, z: 59.19999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 39007274}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -102.512, z: 0}
 --- !u!1 &79037177
 GameObject:
   m_ObjectHideFlags: 0
@@ -22471,6 +22464,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e73e12efdc122164db02e312b00ee9cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 8756039800114528960, guid: a670269a18462d849ba12a61ebf4a775, type: 3}
+  bulletTransform: {fileID: 74198305}
+  canFire: 0
+  timeBetweenFiring: 0.5
+  bulletForce: 15
+  isFiring: 0
+  muzzleFlash:
+  - {fileID: 198515452028179756}
+  - {fileID: 198234346722055562}
+  hitEffect: {fileID: 4269648400581548136}
+  raycastOrigin: {fileID: 74198305}
+  raycastDestination: {fileID: 74198305}
 --- !u!4 &3826281350885755024
 Transform:
   m_ObjectHideFlags: 0
