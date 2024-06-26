@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class CarShooting : MonoBehaviour
 {
+    #region VARIABLES
     private Camera cam;
     public GameObject bullet;
     public Transform bulletTransform;
@@ -14,6 +15,7 @@ public class CarShooting : MonoBehaviour
     public float timeBetweenFiring;
     RaycastWeapon weapon;
     public float bulletForce = 15;
+    public float damage = 1f;
 
     public bool isFiring = false;
     public ParticleSystem[] muzzleFlash;
@@ -23,7 +25,7 @@ public class CarShooting : MonoBehaviour
 
     Ray ray;
     RaycastHit hitInfo;
-
+    #endregion
 
     private void Start()
     {
@@ -44,6 +46,7 @@ public class CarShooting : MonoBehaviour
 
     public void StartFiring()
     {
+        
         // Shooting
         if (!canFire)
         {
