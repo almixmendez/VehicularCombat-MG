@@ -12,8 +12,14 @@ public class RaycastWeapon : MonoBehaviour
 
     Ray ray;
     RaycastHit hitInfo;
+    Camera mainCamera;
 
-    public void StartFiring()
+    private void Start()
+    {
+        mainCamera = Camera.main;
+    }
+
+    public void StartFiring(Vector3 firePosition, Vector3 fireDirection)
     {
         isFiring = true;
         foreach (var particle in muzzleFlash)
@@ -21,9 +27,12 @@ public class RaycastWeapon : MonoBehaviour
             particle.Emit(1);
         }
 
+        ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
         ray.origin = raycastOrigin.position;
         ray.direction = raycastDestination.position - raycastOrigin.position;
-        if(Physics.Raycast(ray, out hitInfo))
+
+        if (Physics.Raycast(ray, out hitInfo))
         {
             //Debug.DrawLine(ray.origin, hitInfo.point, Color.red, 1.0f);
             hitEffect.transform.position = hitInfo.point;

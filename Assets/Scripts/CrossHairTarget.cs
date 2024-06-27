@@ -15,9 +15,16 @@ public class CrossHairTarget : MonoBehaviour
 
     private void Update()
     {
-        ray.origin = mainCamera.transform.position;
-        ray.direction = mainCamera.transform.forward;
-        Physics.Raycast(ray, out hitInfo);
-        transform.position = hitInfo.point;
+        //ray.origin = mainCamera.transform.position;
+        //ray.direction = mainCamera.transform.forward;
+        //Physics.Raycast(ray, out hitInfo);
+        //transform.position = hitInfo.point;
+
+        ray = mainCamera.ScreenPointToRay(transform.position);
+
+        if (Physics.Raycast(ray, out hitInfo))
+        {
+            transform.position = hitInfo.point;
+        }
     }
 }
