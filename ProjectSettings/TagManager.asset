@@ -7,6 +7,7 @@ TagManager:
   - toDestroy
   - path
   - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX

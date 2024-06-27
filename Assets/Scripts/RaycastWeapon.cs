@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class RaycastWeapon : MonoBehaviour
 {
-    //public bool isFiring = false;
-    //public ParticleSystem[] muzzleFlash;
-    //public ParticleSystem hitEffect;
-    //public Transform raycastOrigin;
-    //public Transform raycastDestination;
+    public bool isFiring = false;
+    public ParticleSystem[] muzzleFlash;
+    public ParticleSystem hitEffect;
+    public Transform raycastOrigin;
+    public Transform raycastDestination;
 
-<<<<<<< HEAD
     Ray ray;
     RaycastHit hitInfo;
     Camera mainCamera;
@@ -28,10 +27,8 @@ public class RaycastWeapon : MonoBehaviour
             particle.Emit(1);
         }
 
-        ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-
-        ray.origin = raycastOrigin.position;
-        ray.direction = raycastDestination.position - raycastOrigin.position;
+        ray.origin = firePosition;
+        ray.direction = fireDirection;
 
         if (Physics.Raycast(ray, out hitInfo))
         {
@@ -41,7 +38,6 @@ public class RaycastWeapon : MonoBehaviour
             hitEffect.Emit(1);
         }
     }
-=======
     //Ray ray;
     //RaycastHit hitInfo;
 
@@ -63,7 +59,6 @@ public class RaycastWeapon : MonoBehaviour
     //        hitEffect.Emit(1);
     //    }
     //}
->>>>>>> ed4745c412fd7687d5ed3950ff8644b2e45531bf
 
     //public void StopFiring()
     //{

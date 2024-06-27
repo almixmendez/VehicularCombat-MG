@@ -20,6 +20,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6373268166815824727, guid: 5ab7db30a74f4a0478c37f258cb1f2ae, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6373268166815824727, guid: 5ab7db30a74f4a0478c37f258cb1f2ae, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 6399893937960108832, guid: 5ab7db30a74f4a0478c37f258cb1f2ae, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
