@@ -6,13 +6,17 @@ using UnityEngine;
 public class CarFollowAI : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private float acceleration = 5f;
+    [SerializeField] private float maxSpeed = 20f;
     [SerializeField] private float minDistance;
     [SerializeField] private Transform player;
     [SerializeField] private float damageAmount = 1f;
     [SerializeField] private float attackCooldown = 1f;
+    [SerializeField] private float attackWaitingTime = 1f;
 
     private PlayerHealth playerHealth;
     private bool canAttack = true;
+    private Rigidbody rb;
 
     private void Start()
     {
@@ -22,11 +26,16 @@ public class CarFollowAI : MonoBehaviour
         }
 
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        Follow();
+        if (canAttack)
+        {
+            Follow();
+        }
     }
 
     private void Follow()
@@ -38,14 +47,19 @@ public class CarFollowAI : MonoBehaviour
             if (distance > minDistance)
             {
                 Vector3 direction = (player.position - transform.position).normalized;
-                transform.position += direction * speed * Time.deltaTime;
+
+                if (rb.velocity.magnitude < maxSpeed)
+                {
+                    rb.AddForce(direction * acceleration, ForceMode.Acceleration);
+                }
+                //transform.position += direction * speed * Time.deltaTime;
                 transform.LookAt(player);
             }
             //if (Vector2.Distance(transform.position, player.position) > minDistance)
             //{
             //    transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
             //}
-            //else
+            else
             {
                 if (canAttack)
                 {
@@ -67,7 +81,11 @@ public class CarFollowAI : MonoBehaviour
     private IEnumerator AttackCooldown()
     {
         canAttack = false;
-        yield return new WaitForSeconds(attackCooldown);
+
+        rb.velocity = Vector3.zero;
+        yield return new WaitForSeconds(attackWaitingTime);
+
+        yield return new WaitForSeconds(attackCooldown - attackWaitingTime);
         canAttack = true;
     }
 }
