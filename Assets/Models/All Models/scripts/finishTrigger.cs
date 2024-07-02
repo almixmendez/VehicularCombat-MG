@@ -1,15 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
 
-public class finishTrigger : MonoBehaviour{
+//public class finishTrigger : MonoBehaviour{
 
-    public controller Controller;
+//    public controller Controller;
 
-    private void OnTriggerEnter(Collider other) {
-        if(other.tag == "Finish")
-            Controller.hasFinished = true;
+//    private void OnTriggerEnter(Collider other) {
+//        if(other.tag == "Finish")
+//            Controller.hasFinished = true;
             
-    }
+//    }
 
-}
+//}

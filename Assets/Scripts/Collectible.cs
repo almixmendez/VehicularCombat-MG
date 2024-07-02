@@ -5,28 +5,29 @@ using UnityEngine;
 public class Collectible : MonoBehaviour
 {
     public float turnSpeed = 90f;
+    private GameManager gameManager;
+    private Rigidbody collectibleRb;
+
+    private void Start()
+    {
+        collectibleRb = GetComponent<Rigidbody>();
+        collectibleRb.isKinematic = true;
+
+        gameManager = GameManager.inst;
+        if (gameManager == null)
+        {
+            Debug.Log("GameManager no encontrado!");
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.gameObject.GetComponent<ObstacleScript>() != null)
-        //{
-        //    Destroy(gameObject);
-        //    return;
-        //}
-
-        if (other.gameObject.name != "Player")
+        if (other.CompareTag("Player"))
         {
-            return;
+            Debug.Log("Colisioné!");
+            gameManager.IncrementScore();
+            Destroy(gameObject);
         }
-
-        //GameManager.inst.IncrementScore();
-
-        Destroy(gameObject);
-    }
-
-    void Start()
-    {
-
     }
 
     void Update()
