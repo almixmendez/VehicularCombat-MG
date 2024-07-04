@@ -10,6 +10,7 @@ public class CarControl : MonoBehaviour
     public float steeringRange = 30;
     public float steeringRangeAtMaxSpeed = 10;
     public float centreOfGravityOffset = -1f;
+    public CarControl instance;
 
     WheelControl[] wheels;
     Rigidbody rigidBody;

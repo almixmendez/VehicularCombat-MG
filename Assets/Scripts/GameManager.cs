@@ -2,17 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
-{
-    int score;
-    public static GameManager inst;
-
-    public TextMeshProUGUI scoreText;
-
+{    
+    //[SerializeField] private TextMeshProUGUI scoreText; //sacar
+    private static GameManager inst;
     private CarControl carControl;
+    static GameManager instance;
+    private Vector3 respawnPosition;
+    private bool gamePaused = false;
+
+    void Start()
+    {
+        gamePaused = false;
+        int isGamePaused = PlayerPrefs.GetInt("IsGamePaused", 0);
+
+        if (isGamePaused == 1)
+        {
+            GameManager.instance.PauseGame();
+        }
+        else
+        {
+            GameManager.instance.UnpauseGame();
+        }
+
+        //Cursor.lockState = CursorLockMode.Locked;
+        //respawnPosition = carControl.instance.transform.position;
+    }
+
     private void Awake()
     {
+        instance = this;
+
         if (inst == null)
         {
             inst = this;
@@ -22,10 +44,53 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void IncrementScore()
+
+    // Buttons.
+    public void PlayGame()
     {
-        score++;
-        scoreText.text = "Score: " + score.ToString();
+        Debug.Log("Cambio");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void RestartGame()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //winScreen.SetActive(false);
+        //defeatPanel.SetActive(false);
+        gamePaused = false;
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("UI");
+        //victoryPanel.SetActive(false);
+        //defeatPanel.SetActive(false);
+        gamePaused = false;
+    }
+
+    public void Respawn()
+    {
+        carControl.instance.transform.position = respawnPosition;
+        carControl.instance.gameObject.SetActive(true);
+    }
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        gamePaused = true;
+    }
+
+    private void ResumeGame()
+    {
+        Time.timeScale = 1;
+        gamePaused = false;
+    }
+
+    public void UnpauseGame()
+    {
+        Time.timeScale = 1;
+        gamePaused = false;
+        PlayerPrefs.SetInt("IsGamePaused", gamePaused ? 1 : 0);
     }
 
     public void QuitGame()
