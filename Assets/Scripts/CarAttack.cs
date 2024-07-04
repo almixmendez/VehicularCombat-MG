@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class CarAttack : MonoBehaviour
 {
-    [SerializeField] private int attackDamage = 2;
-    
     private EnemyControl enemyControl;
+
     private void OnCollisionEnter(Collision collision)
     {
          if (collision.gameObject.CompareTag("Enemy"))

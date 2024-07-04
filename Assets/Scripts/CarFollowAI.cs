@@ -72,8 +72,9 @@ public class CarFollowAI : MonoBehaviour
 
     private void Attack()
     {
-        if (playerHealth != null)
+        if (player != null)
         {
+            //PlayerHealth playerHealth = GetComponent<PlayerHealth>();
             playerHealth.TakeDamage(damageAmount);
         }
     }

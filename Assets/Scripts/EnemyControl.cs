@@ -6,7 +6,6 @@ public class EnemyControl : MonoBehaviour
 {
     public int healthPoints = 10;
     public int maxHealthPoints = 10;
-    //private WinOrLoose condition;
 
     private void Start()
     {

@@ -17019,6 +17019,8 @@ GameObject:
   - component: {fileID: 7003977201412843861}
   - component: {fileID: 4079555623607671914}
   - component: {fileID: 5935501349267195672}
+  - component: {fileID: 6977812836804417104}
+  - component: {fileID: 601642272964413715}
   m_Layer: 0
   m_Name: PlayerCar
   m_TagString: Player
@@ -17104,18 +17106,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e73e12efdc122164db02e312b00ee9cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnSpeed: 15
+  firePoint: {fileID: 0}
   bullet: {fileID: 8756039800114528960, guid: a670269a18462d849ba12a61ebf4a775, type: 3}
-  bulletTransform: {fileID: 2771883443458788138}
   canFire: 0
   timeBetweenFiring: 0.5
   bulletForce: 15
-  isFiring: 0
+  bulletDamage: 1
   muzzleFlash:
   - {fileID: 72041610286146260}
   - {fileID: 2042372983329523653}
   hitEffect: {fileID: 971243432091178375}
-  raycastOrigin: {fileID: 2771883443458788138}
-  raycastDestination: {fileID: 2771883443458788138}
+--- !u!114 &6977812836804417104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6373268166815824727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d49ca2a6e6cde9948ae79fc3ebef8f7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  maxHealth: 10
+  healthBar: {fileID: 0}
+--- !u!114 &601642272964413715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6373268166815824727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172b5aa7b7a9f9f4db075579c71292bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6409144034472394203
 GameObject:
   m_ObjectHideFlags: 0
@@ -32985,3 +33013,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403ff9f33e8b93f4fa97fcec90486748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFiring: 0
+  muzzleFlash: []
+  hitEffect: {fileID: 0}
+  raycastOrigin: {fileID: 0}
+  raycastDestination: {fileID: 0}

@@ -99,6 +99,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 4079555623607671914, guid: 5ab7db30a74f4a0478c37f258cb1f2ae, type: 3}
     - {fileID: 5935501349267195672, guid: 5ab7db30a74f4a0478c37f258cb1f2ae, type: 3}
+    - {fileID: 6977812836804417104, guid: 5ab7db30a74f4a0478c37f258cb1f2ae, type: 3}
+    - {fileID: 601642272964413715, guid: 5ab7db30a74f4a0478c37f258cb1f2ae, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -152,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 10
+  maxHealthPoints: 10
 --- !u!114 &9040217282447436219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,8 +170,8 @@ MonoBehaviour:
   speed: 15.9
   acceleration: 3.45
   maxSpeed: 20
-  minDistance: 3.5
+  minDistance: 3
   player: {fileID: 0}
-  damageAmount: 0
+  damageAmount: 1.5
   attackCooldown: 1
-  attackWaitingTime: 2
+  attackWaitingTime: 3
