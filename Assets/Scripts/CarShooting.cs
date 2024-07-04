@@ -15,7 +15,7 @@ public class CarShooting : MonoBehaviour
     private float timer;
     public float timeBetweenFiring;
     public float bulletForce = 15f;
-    public float damage = 1f;
+    public float bulletDamage = 1f;
     public ParticleSystem[] muzzleFlash;
     public ParticleSystem hitEffect;
     #endregion

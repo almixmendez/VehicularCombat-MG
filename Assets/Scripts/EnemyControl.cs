@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class EnemyControl : MonoBehaviour
 {
-    public int healthPoints;
+    public int healthPoints = 10;
+    public int maxHealthPoints = 10;
     //private WinOrLoose condition;
 
     private void Start()
     {
-        healthPoints = 100;
+        healthPoints = maxHealthPoints;
         //condition = FindObjectOfType<WinOrLoose>();
     }
 
     // Función de daño.
     public void receiveDamage()
     {
-        healthPoints = healthPoints - 50;
+        healthPoints = healthPoints - 2;
 
         if (healthPoints <= 0)
         {
@@ -38,6 +39,9 @@ public class EnemyControl : MonoBehaviour
         {
             receiveDamage();
         }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            receiveDamage();
+        }
     }
-
 }
