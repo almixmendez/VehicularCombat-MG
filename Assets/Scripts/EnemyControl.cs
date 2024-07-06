@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyControl : MonoBehaviour
 {
-    public int healthPoints = 10;
-    public int maxHealthPoints = 10;
+    public float healthPoints = 10;
+    public float maxHealthPoints = 10;
 
     private void Start()
     {
@@ -14,33 +14,26 @@ public class EnemyControl : MonoBehaviour
     }
 
     // Función de daño.
-    public void receiveDamage()
+    public void receiveDamage(float damage)
     {
-        healthPoints = healthPoints - 2;
+        healthPoints -= damage;
 
         if (healthPoints <= 0)
         {
-            this.botDeath();
+            Destroy(gameObject);
         }
     }
 
-    public void botDeath()
-    {
-        Destroy(gameObject);
-
-        //condition.EnemyEliminated();
-    }
-
-    // Daño por colisión del proyectil.
+    // Daño por colisión.
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
-        {
-            receiveDamage();
-        }
         if (collision.gameObject.CompareTag("Player"))
         {
-            receiveDamage();
+            receiveDamage(2f);
+        }
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            receiveDamage(2f);
         }
     }
 }

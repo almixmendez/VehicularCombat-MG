@@ -26,7 +26,7 @@ public class BulletBehaviour : MonoBehaviour
 
         if (enemyComponent != null)
         {
-            enemyComponent.receiveDamage();
+            enemyComponent.receiveDamage(damage);
         }
 
         Destroy(gameObject);

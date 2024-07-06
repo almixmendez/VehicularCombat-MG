@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Slider slider;
+    [SerializeField] float initialHealth = 5;
 
     private void Start()
     {
@@ -13,7 +14,6 @@ public class HealthBar : MonoBehaviour
 
         if (slider != null)
         {
-            float initialHealth = 5;
             SetHealth(initialHealth);
         }
         else

@@ -12,7 +12,7 @@ public class CarAttack : MonoBehaviour
         {
             EnemyControl enemyControl = collision.gameObject.GetComponent<EnemyControl>();
             Debug.Log("Choqué al enemigo!");
-            enemyControl.receiveDamage();
+            enemyControl.receiveDamage(1f);
         }
     }
 }

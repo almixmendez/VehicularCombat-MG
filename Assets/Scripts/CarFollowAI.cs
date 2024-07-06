@@ -12,7 +12,7 @@ public class CarFollowAI : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private float damageAmount = 1f;
     [SerializeField] private float attackCooldown = 1f;
-    [SerializeField] private float attackWaitingTime = 1f;
+    //[SerializeField] private float attackWaitingTime = 1f;
 
     private PlayerHealth playerHealth;
     private bool canAttack = true;
@@ -22,20 +22,53 @@ public class CarFollowAI : MonoBehaviour
     {
         if (player == null)
         {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+            GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+            if (playerObject != null)
+            {
+                player = playerObject.transform;
+                playerHealth = playerObject.GetComponent<PlayerHealth>();
+                if (playerHealth == null)
+                {
+                    Debug.LogError("Player object does not have a PlayerHealth component.");
+                }
+            }
+            else
+            {
+                Debug.LogError("Player object with tag 'Player' not found.");
+            }
+        }
+        else
+        {
+            playerHealth = player.GetComponent<PlayerHealth>();
+            if (playerHealth == null)
+            {
+                Debug.LogError("Player object does not have a PlayerHealth component.");
+            }
         }
 
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-
         rb = GetComponent<Rigidbody>();
+        if (rb == null)
+        {
+            Debug.LogError("Rigidbody component not found on " + gameObject.name);
+        }
+        //if (player == null)
+        //{
+        //    //GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        //    player = GameObject.FindGameObjectWithTag("Player").transform;
+        //}
+
+        //playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+
+        //rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        if (canAttack)
-        {
-            Follow();
-        }
+        Follow();
+        //if (canAttack)
+        //{
+        //    Follow();
+        //}
     }
 
     private void Follow()
@@ -59,23 +92,48 @@ public class CarFollowAI : MonoBehaviour
             //{
             //    transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
             //}
-            else
-            {
-                if (canAttack)
-                {
-                    Attack();
-                    StartCoroutine(AttackCooldown());
-                }
-            }
+            //else
+            //{
+            //    if (canAttack)
+            //    {
+            //        Attack();
+            //        StartCoroutine(AttackCooldown());
+            //    }
+            //}
+        //}
+        //else
+        //{
+        //    Debug.LogError("Player reference is null.");
+        //}
         }
     }
 
     private void Attack()
     {
-        if (player != null)
+        if (playerHealth != null)
         {
-            //PlayerHealth playerHealth = GetComponent<PlayerHealth>();
             playerHealth.TakeDamage(damageAmount);
+        }
+        else
+        {
+            Debug.LogError("PlayerHealth reference is null in Attack method.");
+        }
+        //if (player != null)
+        //{
+        //    //PlayerHealth playerHealth = GetComponent<PlayerHealth>();
+        //    playerHealth.TakeDamage(damageAmount);
+        //}
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && canAttack)
+        {
+           if (playerHealth != null)
+           {
+              playerHealth.TakeDamage(damageAmount);
+              StartCoroutine(AttackCooldown());
+           }
         }
     }
 
@@ -83,10 +141,9 @@ public class CarFollowAI : MonoBehaviour
     {
         canAttack = false;
 
-        rb.velocity = Vector3.zero;
-        yield return new WaitForSeconds(attackWaitingTime);
-
-        yield return new WaitForSeconds(attackCooldown - attackWaitingTime);
+        //rb.velocity = Vector3.zero;
+        yield return new WaitForSeconds(attackCooldown);
+        //yield return new WaitForSeconds(attackCooldown - attackWaitingTime);
         canAttack = true;
     }
 }
