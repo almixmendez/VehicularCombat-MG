@@ -64,11 +64,11 @@ public class CarFollowAI : MonoBehaviour
 
     void Update()
     {
-        Follow();
-        //if (canAttack)
-        //{
-        //    Follow();
-        //}
+        //Follow();
+        if (canAttack)
+        {
+            Follow();
+        }
     }
 
     private void Follow()
@@ -92,21 +92,17 @@ public class CarFollowAI : MonoBehaviour
             //{
             //    transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
             //}
-            //else
-            //{
-            //    if (canAttack)
-            //    {
-            //        Attack();
-            //        StartCoroutine(AttackCooldown());
-            //    }
-            //}
-        //}
-        //else
-        //{
-        //    Debug.LogError("Player reference is null.");
-        //}
-        }
+            else if (canAttack)
+                {
+                    Attack();
+                    StartCoroutine(AttackCooldown());
+                }
+            else
+                {
+                    Debug.LogError("Player reference is null.");
+                }
     }
+}
 
     private void Attack()
     {
@@ -140,8 +136,7 @@ public class CarFollowAI : MonoBehaviour
     private IEnumerator AttackCooldown()
     {
         canAttack = false;
-
-        //rb.velocity = Vector3.zero;
+        rb.velocity = Vector3.zero;
         yield return new WaitForSeconds(attackCooldown);
         //yield return new WaitForSeconds(attackCooldown - attackWaitingTime);
         canAttack = true;

@@ -11013,6 +11013,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 991186581}
     m_Modifications:
+    - target: {fileID: 4018433304919446167, guid: 532bd844f18a72f459ef0c35bb951e94, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4697187091179875906, guid: 532bd844f18a72f459ef0c35bb951e94, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -11084,6 +11088,26 @@ PrefabInstance:
     - target: {fileID: 7055908699522994858, guid: 532bd844f18a72f459ef0c35bb951e94, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8364212049158074726, guid: 532bd844f18a72f459ef0c35bb951e94, type: 3}
+      propertyPath: playerAttackCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8544840155324616442, guid: 532bd844f18a72f459ef0c35bb951e94, type: 3}
+      propertyPath: m_Size.z
+      value: 2.1883674
+      objectReference: {fileID: 0}
+    - target: {fileID: 8544840155324616442, guid: 532bd844f18a72f459ef0c35bb951e94, type: 3}
+      propertyPath: m_Center.x
+      value: -0.075970694
+      objectReference: {fileID: 0}
+    - target: {fileID: 8544840155324616442, guid: 532bd844f18a72f459ef0c35bb951e94, type: 3}
+      propertyPath: m_Center.y
+      value: 0.18134871
+      objectReference: {fileID: 0}
+    - target: {fileID: 8544840155324616442, guid: 532bd844f18a72f459ef0c35bb951e94, type: 3}
+      propertyPath: m_Center.z
+      value: 0.19364148
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11173,6 +11197,10 @@ PrefabInstance:
     - target: {fileID: 2771883443458788138, guid: 5ab7db30a74f4a0478c37f258cb1f2ae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -5.115
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357979603227215746, guid: 5ab7db30a74f4a0478c37f258cb1f2ae, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3399676306488179532, guid: 5ab7db30a74f4a0478c37f258cb1f2ae, type: 3}
       propertyPath: healthBar
@@ -11268,7 +11296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8054962527732308975, guid: 5ab7db30a74f4a0478c37f258cb1f2ae, type: 3}
       propertyPath: m_Size.z
-      value: 2.1106272
+      value: 2.1078482
       objectReference: {fileID: 0}
     - target: {fileID: 8054962527732308975, guid: 5ab7db30a74f4a0478c37f258cb1f2ae, type: 3}
       propertyPath: m_Enabled
@@ -11276,7 +11304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8054962527732308975, guid: 5ab7db30a74f4a0478c37f258cb1f2ae, type: 3}
       propertyPath: m_Center.x
-      value: 0.040292192
+      value: 0.040292196
       objectReference: {fileID: 0}
     - target: {fileID: 8054962527732308975, guid: 5ab7db30a74f4a0478c37f258cb1f2ae, type: 3}
       propertyPath: m_Center.y
@@ -11284,7 +11312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8054962527732308975, guid: 5ab7db30a74f4a0478c37f258cb1f2ae, type: 3}
       propertyPath: m_Center.z
-      value: 0.24238165
+      value: 0.24099238
       objectReference: {fileID: 0}
     - target: {fileID: 8436873198646593270, guid: 5ab7db30a74f4a0478c37f258cb1f2ae, type: 3}
       propertyPath: m_Name

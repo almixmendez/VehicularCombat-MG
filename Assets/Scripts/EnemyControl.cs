@@ -6,6 +6,8 @@ public class EnemyControl : MonoBehaviour
 {
     public float healthPoints = 10;
     public float maxHealthPoints = 10;
+    public float playerAttackCooldown = 10;
+    private bool canPlayerAttack = true;
 
     private void Start()
     {
@@ -27,13 +29,22 @@ public class EnemyControl : MonoBehaviour
     // Daño por colisión.
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && canPlayerAttack)
         {
             receiveDamage(2f);
+            StartCoroutine(PlayerAttackCooldown());
         }
-        if (collision.gameObject.CompareTag("Bullet"))
+        else if (collision.gameObject.CompareTag("Bullet") && canPlayerAttack)
         {
             receiveDamage(2f);
+            StartCoroutine(PlayerAttackCooldown());
         }
+    }
+
+    private IEnumerator PlayerAttackCooldown()
+    {
+        canPlayerAttack = false;
+        yield return new WaitForSeconds(playerAttackCooldown);
+        canPlayerAttack = true;
     }
 }
