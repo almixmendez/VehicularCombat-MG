@@ -12,9 +12,14 @@ public class GameManager : MonoBehaviour
     static GameManager instance;
     private Vector3 respawnPosition;
     private bool gamePaused = false;
+    [SerializeField] WinCondition winCondition;
+    [SerializeField] LooseCondition looseCondition;
 
     void Start()
     {
+        winCondition = FindObjectOfType<WinCondition>();
+        looseCondition = FindObjectOfType<LooseCondition>();
+
         gamePaused = false;
         int isGamePaused = PlayerPrefs.GetInt("IsGamePaused", 0);
 
@@ -27,7 +32,7 @@ public class GameManager : MonoBehaviour
             GameManager.instance.UnpauseGame();
         }
 
-        //Cursor.lockState = CursorLockMode.Locked;
+        ////Cursor.lockState = CursorLockMode.Locked;
         //respawnPosition = carControl.instance.transform.position;
     }
 
@@ -56,16 +61,16 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        //winScreen.SetActive(false);
-        //defeatPanel.SetActive(false);
+        winCondition.winScreen.SetActive(false);
+        looseCondition.loosePanel.SetActive(false);
         gamePaused = false;
     }
 
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene("UI");
-        //victoryPanel.SetActive(false);
-        //defeatPanel.SetActive(false);
+        SceneManager.LoadScene("MainMenu");
+        winCondition.winScreen.SetActive(false);
+        looseCondition.loosePanel.SetActive(false);
         gamePaused = false;
     }
 
